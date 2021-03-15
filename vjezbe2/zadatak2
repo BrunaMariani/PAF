@@ -1,0 +1,36 @@
+from math import sin, cos, radians
+import matplotlib.pyplot as plt
+v0 = 10
+theta = radians(45)
+v_x = v0 * cos(theta)
+x = 0
+y = 0
+dt = 0.5
+t = 0
+g = 9.81
+t_l = []
+x_l = []
+y_l = []
+
+for i in range(20):
+    x = v_x * t
+    y = v0*sin(theta)*t -0.5*g*t*t
+    t += dt
+
+    x_l.append(x)
+    y_l.append(y)
+    t_l.append(t)
+
+plt.subplot(311)
+plt.plot(x_l,y_l, 'g')
+plt.title('y-x graf')
+
+plt.subplot(312)
+plt.plot(t_l,x_l)
+plt.title('x-t graf')
+plt.subplot(313)
+plt.plot(t_l,y_l, 'r')
+plt.title('y-t graf')
+plt.show()
+
+

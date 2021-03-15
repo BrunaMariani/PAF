@@ -20,13 +20,14 @@ for i in range(20):
     akceleracije.append(a)
 
 plt.subplot(311)
-
 plt.plot(vrijeme,pomaci)
-
+plt.title('x-t graf')
 plt.subplot(312)
 plt.plot(vrijeme, brzine, 'r')
+plt.title('v-t graf')
 plt.subplot(313)
 plt.plot(vrijeme, akceleracije, 'g')
+plt.title('a-t graf')
 
 plt.show()
 

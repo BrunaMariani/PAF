@@ -1,0 +1,2 @@
+from kinematika.py import kosi_hitac
+gibanje = kosi_hitac(12,22,3)
