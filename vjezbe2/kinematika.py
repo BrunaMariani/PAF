@@ -3,6 +3,7 @@ from math import sin, cos, radians
 def jednoliko_gibanje(F,m,t):
     a = F/m
     d_t = 0.5
+    N = t*2
     v = 0
     x = 0
     t = 0
@@ -10,7 +11,7 @@ def jednoliko_gibanje(F,m,t):
     brzine = []
     pomaci = []
     vrijeme = []
-    for i in range(20):
+    for i in range(N):
         v = v + a*d_t
         x = x + v*d_t
         t += d_t
@@ -35,6 +36,7 @@ def jednoliko_gibanje(F,m,t):
 def kosi_hitac(v0,theta,t):
     theta_1 = radians(theta)
     v_x = v0 * cos(theta_1)
+    vy = v0*sin(theta_1)
     x = 0
     y = 0
     dt = 0.5
@@ -49,8 +51,9 @@ def kosi_hitac(v0,theta,t):
 
 
     for i in range(N):
-        x = v_x * t
-        y = v0*sin(theta_1)*t -0.5*g*t*t
+        x = x + v_x * dt
+        vy = vy - g*dt
+        y = y + vy*dt
         t += dt
 
         x_l.append(x)
@@ -65,4 +68,3 @@ def kosi_hitac(v0,theta,t):
     plt.plot(t_l,y_l, 'r')
     plt.show()
  
-kosi_hitac(12,30,10)
