@@ -1,13 +1,65 @@
-from math import sin, radians
-def maksimalna_visina(v0,theta):
+from math import sin, cos, radians, sqrt
+import matplotlib.pyplot as plt 
+def nacrtaj_putanju(v0,theta):
+    theta_1 = radians(theta)
+    v_x = v0 * cos(theta_1)
+    v_y = v0*sin(theta_1)
+    x = 0
+    y = 0
+    dt = 0.1
+    t = 0
     g = 9.81
-    x = radians(theta)
-    t = v0*sin(x)/g
-    H_maks = v0*sin(x)*t - 0.5*g*t*t
-    print(H_maks)
+    x_l = []
+    y_l = []
+    x_l.append(x)
+    y_l.append(y)
+    while True:
+        x = x + v_x * dt
+        v_y = v_y - g*dt
+        y = y + v_y*dt
+        t += dt
+        if y <= 0:
+            break
+        
+        x_l.append(x)
+        y_l.append(y)
+    plt.plot(x_l,y_l)
+    plt.show()
+
 def domet(v0,theta):
-    x = radians(theta)
+    theta_1 = radians(theta)
+    v_x = v0 * cos(theta_1)
+    v_y = v0*sin(theta_1)
+    x = 0
+    y = 0
+    dt = 0.1
     g = 9.81
-    D = v0*v0*sin(2*x)/g
-    print(D)
-domet(37,53.1)
+    while True:
+        x = x + v_x * dt
+        v_y = v_y - g*dt
+        y = y + v_y*dt
+        if y <= 0:
+            break
+    print(x)
+
+def maksimalna_brzina(v0,theta):
+    theta_1 = radians(theta)
+    v_x = v0 * cos(theta_1)
+    v_y = v0*sin(theta_1)
+    y = 0
+    dt = 0.1
+    g = 9.81
+    while True:
+        v_y = v_y - g*dt
+        y = y + v_y*dt
+        if y <= 0:
+            break
+    maks_v = sqrt(v_x**2+v_y**2)
+    print(maks_v)
+
+
+
+
+
+
+
