@@ -1,0 +1,4 @@
+import particle1 as prt 
+p1 = prt.Particle(10,-5)
+p1.printInfo()
+p1.udaljenost()
