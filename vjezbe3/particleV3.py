@@ -31,6 +31,10 @@ class Particle:
         self.x_.append(self.x)
         self.y_.append(self.y)
     def range(self):
+        ...
+p1 = Particle(30,45,2,2)
+p1.printInfo()
+
        
         
 
@@ -52,9 +56,7 @@ class Particle:
              
       
             
-p1 = Particle(30,45,2,2)
-p1.printInfo()
-p1.range()
+
 
 
 

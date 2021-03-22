@@ -1,6 +1,6 @@
 from math import sin, cos, radians
 import matplotlib.pyplot as plt
-v0 = 10
+v0 = 20
 theta = radians(45)
 v_x = v0 * cos(theta)
 x = 0
