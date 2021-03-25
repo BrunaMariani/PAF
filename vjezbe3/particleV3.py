@@ -1,39 +1,55 @@
 from math import sin,cos,radians
+import matplotlib.pyplot as plt
 class Particle:
     def __init__(self, v0, theta, x0, y0):
         self.v0 = v0
-        self.theta = theta
-        self.x0 = x0
-        self.y0 = y0
+        self.theta = radians(theta)
+        self.x = x0
+        self.y = y0
         self.x_ = []
         self.y_ = []
-        self.y = 0
-        self.x = 0
+        self.x_.append(x0)
+        self.y_.append(y0)
+        self.vx = v0*cos(self.theta)
+        self.vy = v0*sin(self.theta)
+        
     def printInfo(self):
-        print(f'{self.v0},{self.theta},{self.x0},{self.y0}')
+        print(f'{self.v0},{self.theta},{self.x},{self.y}')
     def reset(self):
         self.v0 = 0
         self.theta = 0
         self.x0 =0
         self.y0 = 0
+        self.y_ = []
+        self.x_ = []
     
     def __move(self, dt):
         g = 9.81
-        
-        
-    
-        theta = radians(self.theta)
-        v_x = self.v0 * cos(self.theta)
-        self.x = self.x0 + v_x * dt
-        v_y = self.v0*sin(self.theta)
-        v_y = v_y - g*dt
-        self.y =  self.y0 + v_y*dt
+        self.x = self.x + self.vx*dt
+        self.vy = self.vy - g*dt
+        self.y = self.y + self.vy*dt
         self.x_.append(self.x)
         self.y_.append(self.y)
     def range(self):
-        ...
+        x = self.x
+        while True:
+            self.__move(0.1)
+            if self.y <= 0:
+                break
+        
+        print(self.x-x)
+    
+    def plot_trajectory(self):
+        plt.plot(self.x_,self.y_)
+        plt.show()
+        
+        
+
 p1 = Particle(30,45,2,2)
 p1.printInfo()
+p1.range()
+p1.plot_trajectory()
+
 
        
         
