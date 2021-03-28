@@ -45,10 +45,6 @@ class Particle:
         
         
 
-p1 = Particle(30,45,2,2)
-p1.printInfo()
-p1.range()
-p1.plot_trajectory()
 
 
        

@@ -1,4 +1,4 @@
-import particle1 as prt 
-p1 = prt.Particle(10,-5)
+import particleV3 as prt 
+p1 = prt.Particle(20,30,5,5)
 p1.printInfo()
-p1.udaljenost()
+p1.range()

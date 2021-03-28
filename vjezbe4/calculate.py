@@ -18,11 +18,11 @@ print(calculus.deriviraj(f3,0.01,2))
 
 
 a,b = calculus.derivacija(f4,0.01,-2,2)
-lista1,lista2 = calculus.derivacija(f4,0.1,-2,2)
-plt.plot(a,b)
+plt.scatter(a,b)
 
 
-plt.scatter(lista1,lista2)
+
+
 plt.show()
 
 
