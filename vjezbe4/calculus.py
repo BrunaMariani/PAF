@@ -38,3 +38,4 @@ def integracija(func,a,b,N):
         xk += dx
     integ = (dx/2)*suma
     print(integ)
+
