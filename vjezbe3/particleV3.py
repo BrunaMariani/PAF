@@ -30,10 +30,10 @@ class Particle:
         self.y = self.y + self.vy*dt
         self.x_.append(self.x)
         self.y_.append(self.y)
-    def range(self):
+    def range(self,dt):
         x = self.x
         while True:
-            self.__move(0.1)
+            self.__move(dt)
             if self.y <= 0:
                 break
         
@@ -42,6 +42,12 @@ class Particle:
     def plot_trajectory(self):
         plt.plot(self.x_,self.y_)
         plt.show()
+    
+    def analiticki(self):
+        D = (self.v0**2*sin(2*self.theta))/9.81
+        return D
+
+
         
         
 
