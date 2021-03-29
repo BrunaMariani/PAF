@@ -18,17 +18,24 @@ def derivacija(func,h,x1,x2):
 
 def integriraj(func,a,b,N):
     dx = (b-a)/N
-    x_g = a + dx
-    x_d = a
+    x_g = a
+    x_d = a+dx 
+    d_l = []
+    g_l = []
     g_m = 0
     d_m = 0
+    xg_l = []
+    xd_l = []
     for i in range(N):
         g_m += func(x_g)*dx
         d_m += func(x_d)*dx
+        xg_l.append(x_d)
+        xd_l.append(x_g)
         x_d+= dx
         x_g += dx
-    print(f'Gornja međa je {g_m}, a donja {d_m}')
-
+        g_l.append(g_m)
+        d_l.append(d_m)  
+    return g_m,d_m
 def integracija(func,a,b,N):
     dx = (b-a)/N
     xk = a
@@ -37,5 +44,5 @@ def integracija(func,a,b,N):
         suma += (func(xk) + func(xk+dx))
         xk += dx
     integ = (dx/2)*suma
-    print(integ)
+    return integ
 

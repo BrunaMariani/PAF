@@ -4,6 +4,10 @@ import modul
 import math
 import numpy as np
 
-def f4(x):
-    return 5*x**3 - 2*x**2+2*x-3
-calculus.integracija(f4,2,6,100)
+def f1(x):
+    return 2*x**2-3
+
+
+a,b,c,d = calculus.integracija(f1,0,2,100)
+plt.plot(a,c)
+plt.show()
