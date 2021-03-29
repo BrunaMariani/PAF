@@ -37,7 +37,7 @@ class Particle:
             if self.y <= 0:
                 break
         
-        print(self.x-x)
+        return self.x-x
     
     def plot_trajectory(self):
         plt.plot(self.x_,self.y_)
