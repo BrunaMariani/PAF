@@ -1,4 +1,4 @@
-from math import sin,cos,radians
+from math import sin,cos,radians, sqrt
 import matplotlib.pyplot as plt
 class Particle:
     def __init__(self, v0, theta, x0, y0):
@@ -12,6 +12,9 @@ class Particle:
         self.y_.append(y0)
         self.vx = v0*cos(self.theta)
         self.vy = v0*sin(self.theta)
+        self.t = 0
+        self.vy_ = []
+    
         
     def printInfo(self):
         print(f'{self.v0},{self.theta},{self.x},{self.y}')
@@ -22,7 +25,9 @@ class Particle:
         self.y0 = 0
         self.y_ = []
         self.x_ = []
+        self.vy_ = []
     
+        
     def __move(self, dt):
         g = 9.81
         self.x = self.x + self.vx*dt
@@ -30,6 +35,7 @@ class Particle:
         self.y = self.y + self.vy*dt
         self.x_.append(self.x)
         self.y_.append(self.y)
+        self.vy_.append(self.vy)
     def range(self,dt):
         x = self.x
         while True:
@@ -46,7 +52,7 @@ class Particle:
     def analiticki(self):
         D = (self.v0**2*sin(2*self.theta))/9.81
         return D
-
+  
 
         
         
