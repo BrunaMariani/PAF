@@ -14,15 +14,8 @@ def f4(x):
 
 print(modul.value(f1,1))
 print(modul.value(f2,1))
-print(calculus.deriviraj(f3,0.01,2))
+print(calculus.deriviraj3(f3,0.01,2))
+print(calculus.deriviraj2(f3,0.01,2))
 
-
-a,b = calculus.derivacija(f4,0.01,-2,2)
-plt.scatter(a,b)
-
-
-
-
-plt.show()
 
 

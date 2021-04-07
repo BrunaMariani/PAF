@@ -1,6 +1,9 @@
 
 import numpy as np
-def deriviraj(func,h,x):
+def deriviraj2(func,h,x):
+    d = (func(x+h)-func(x))/h
+    return d
+def deriviraj3(func,h,x):
     d = (func(h+x)-func(x-h))/(2*h)
     return d 
     
@@ -20,21 +23,13 @@ def integriraj(func,a,b,N):
     dx = (b-a)/N
     x_g = a
     x_d = a+dx 
-    d_l = []
-    g_l = []
     g_m = 0
     d_m = 0
-    xg_l = []
-    xd_l = []
     for i in range(N):
         g_m += func(x_g)*dx
         d_m += func(x_d)*dx
-        xg_l.append(x_d)
-        xd_l.append(x_g)
         x_d+= dx
-        x_g += dx
-        g_l.append(g_m)
-        d_l.append(d_m)  
+        x_g += dx 
     return g_m,d_m
 def integracija(func,a,b,N):
     dx = (b-a)/N
