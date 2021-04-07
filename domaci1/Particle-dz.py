@@ -51,6 +51,6 @@ class Particle:
             self.__move(dt)
             if self.y <= 0:
                 break
-        v_ymax = max(self.vy_)
+        v_ymax = max(abs(self.vy_))
         v_max = sqrt(v_ymax**2+self.vx**2)
         print(v_max)
