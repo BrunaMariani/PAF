@@ -7,13 +7,18 @@ def deriviraj3(func,h,x):
     d = (func(h+x)-func(x-h))/(2*h)
     return d 
     
-def derivacija(func,h,x1,x2):
+def derivacija(func,h,x1,x2,m=3):
     
     d_lista = []
     x_lista = np.arange(x1,x2,h)
     
     for x in x_lista:
-        d = deriviraj(func,h,x)
+        if m ==3:
+            d = deriviraj3(func,h,x)
+        elif m == 2:
+            d = deriviraj2(func,h,x)
+        else:
+            print('nema te opcije')
         d_lista.append(d)
 
 
