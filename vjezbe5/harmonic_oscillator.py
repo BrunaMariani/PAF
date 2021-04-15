@@ -1,6 +1,6 @@
 import math
 import matplotlib.pyplot as plt
-class HarmonicOscilator:
+class HarmonicOscillator:
     def __init__(self,k,m,x0,v0):
         self.x_l = []
         self.v_l = []
@@ -10,8 +10,12 @@ class HarmonicOscilator:
         self.m = m
         self.x = x0
         self.v = v0
-        self.a = 0
+        self.a = -(self.k*self.x)/self.m
         self.t = 0
+        self.x_l.append(self.x)
+        self.v_l.append(self.v)
+        self.a_l.append(self.a)
+        self.t_l.append(self.t)
 
     def oscillate(self,dt,t):
         N = int(t/dt)
@@ -35,14 +39,51 @@ class HarmonicOscilator:
         plt.subplot(1,3,3)
         plt.plot(t,a)
         plt.show()
-    def preciznost(self):
-        x1,t1 = self.oscillate(0.1,2)
-        x2,t2 = self.oscillate(0.01,2)
-        x3,t3 = self.oscillate(0.05,2)
-        plt.scatter(x1,t1)
-        plt.scatter(x2,t2)
-        plt.scatter(x3,t3)
-        plt.show()
-h1 = HarmonicOscilator(10,0.1,0.3,0)
-h1.plot_trajectory(0.01,2)
-h1.preciznost()
+    
+    def reset(self):
+        del self.k
+        del self.m
+        del self.x
+        del self.v
+        del self.a
+        del self.t
+        del self.x_l
+        del self.v_l
+        del self.a_l
+        del self.t_l
+    
+    def preciznost(self,dt,t=2):
+        self.oscillate(dt,t)
+        plt.scatter(self.t_l,self.x_l)
+        plt.title('x-t graf')
+        
+    def analiticki(self,dt,t1=2):
+        self.x_l=[]
+        self.t_l=[]
+        self.omega=math.sqrt(self.k/self.m)
+        self.t=0
+        while self.t<=t1:
+            x=self.x*math.cos(self.omega*self.t)
+            self.t+=dt
+            self.x_l.append(x)
+            self.t_l.append(self.t)
+        return self.x_l,self.t_l
+    def period(self,dt,t):
+        x = self.x
+        T = 0
+        self.oscillate(dt,t)
+        for element in self.x_l:
+            if x-0.0002 < element < x+0.0002:
+                break
+            else:
+                T += dt
+        print(T)
+
+        
+        
+    
+h1 = HarmonicOscillator(10,0.1,0.3,0)
+h1.period(0.01,5)
+#h1.plot_trajectory(0.01,2)
+#plt.show()
+
