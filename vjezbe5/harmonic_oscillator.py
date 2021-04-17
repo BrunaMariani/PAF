@@ -69,21 +69,33 @@ class HarmonicOscillator:
             self.t_l.append(self.t)
         return self.x_l,self.t_l
     def period(self,dt,t):
-        x = self.x
+        A = self.x
         T = 0
         self.oscillate(dt,t)
-        for element in self.x_l:
-            if x-0.0002 < element < x+0.0002:
-                break
-            else:
-                T += dt
+        for x in self.x_l:
+                if x > 0:
+                    T += dt
+                else:
+                    break
+        print(4*T)
+
+    def T_analiticki(self):
+        T = 2*math.pi*math.sqrt(self.m/self.k)
         print(T)
+            
+        
+
+        
+           
+            
+        
 
         
         
     
-h1 = HarmonicOscillator(10,0.1,0.3,0)
-h1.period(0.01,5)
-#h1.plot_trajectory(0.01,2)
+#h1 = HarmonicOscillator(10,0.1,0.3,0)
+#h1.period(0.01,5)
+
+#h1.plot_trajectory(0.01,5)
 #plt.show()
 
