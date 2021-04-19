@@ -1,0 +1,11 @@
+import zdk1 as vh 
+p1 = vh.VertikalniHitac(2,20)
+p2 = vh.VertikalniHitac(0,0)
+p1.printInfo()
+p1.promijena_visine(10)
+p1.promijena_brzine(45)
+p1.printInfo()
+p2.printInfo()
+p2.promijena_visine(0.1)
+p2.promijena_brzine(5)
+p2.printInfo()
