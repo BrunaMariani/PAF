@@ -15,3 +15,5 @@ float jednadzba(float a1,float b1, float c1,float a2,float b2, float c2)
 int main()
 {
     jednadzba(5,2,6,4,-3,7);
+     return 0;
+}
